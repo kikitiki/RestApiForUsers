@@ -33,6 +33,22 @@ public class UserService {
         return userDto;
     }
 
+    public Optional<UserDto> getUserById(Long id){
+
+        Optional<User> user = userRepo.findById(id);
+        if (user.isPresent()){
+            UserDto userDto = new UserDto();
+            userDto.setId(user.get().getId());
+            userDto.setFirstName(user.get().getFirstName());
+            userDto.setLastName(user.get().getLastName());
+            userDto.setEmail(user.get().getEmail());
+            return Optional.of(userDto);
+        }
+        return Optional.empty();
+
+
+    }
+
     public void  deleteUserById(Long id){
         userRepo.deleteById(id);
     }
