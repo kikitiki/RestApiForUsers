@@ -6,6 +6,8 @@ import com.example.UserAccount.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -18,6 +20,16 @@ public class UserService {
         user.setLastName(userDto.getLastName());
         user.setEmail(userDto.getEmail());
         userRepo.save(user);
+        return userDto;
+    }
+
+    public UserDto updateUser(UserDto userDto,Long id){
+        Optional<User> user = userRepo.findById(id);
+        User updatedUser = user.get();
+        updatedUser.setFirstName(userDto.getFirstName());
+        updatedUser.setLastName(userDto.getLastName());
+        updatedUser.setEmail(userDto.getEmail());
+        userRepo.save(updatedUser);
         return userDto;
     }
 
