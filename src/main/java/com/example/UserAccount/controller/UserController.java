@@ -4,11 +4,9 @@ import com.example.UserAccount.dto.UserDto;
 import com.example.UserAccount.service.UserService;
 import jakarta.persistence.Column;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
@@ -20,5 +18,11 @@ public class UserController {
     @PostMapping
     public UserDto createUser(@RequestBody UserDto userDto){
         return userService.createUser(userDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable Long id){
+        userService.deleteUserById(id);
+        return ResponseEntity.ok("Successfully deleted user");
     }
 }
