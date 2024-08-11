@@ -12,6 +12,7 @@ Navigate to the directory where you extracted the project and select the root fo
 Set up the application.properties file in  the src/main/resources directory with the appropriate parameters for your MSSQL .
 
 ##Testing the API
+-Use Postman or any other API client to test the available endpoints.
 
 -Create user 
 POST /api/users

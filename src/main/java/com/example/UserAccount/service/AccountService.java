@@ -36,7 +36,7 @@ public class AccountService {
         return new AccountDto(account.getId(),account.getAccountNumber(),account.getBalance());
     }
 
-    @Transactional
+
     public List<AccountDto> getAccountByUserId(Long userId){
         List<Account> accounts = accountRepo.findByUserId(userId);
 
